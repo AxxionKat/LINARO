@@ -1,7 +1,7 @@
 This is doc/cpp.info, produced by makeinfo version 4.13 from
-/mnt/jenkins/workspace/linaro-android_toolchain-4.8-2014.04/build/objdir/../build/../gcc/gcc-linaro-4.8-2014.04/gcc/doc/cpp.texi.
+/mnt/jenkins/workspace/linaro-android_toolchain-4.9-2014.04/build/objdir/../build/../gcc/gcc-linaro-4.9-2014.04/gcc/doc/cpp.texi.
 
-Copyright (C) 1987-2013 Free Software Foundation, Inc.
+Copyright (C) 1987-2014 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -132,7 +132,7 @@ Obsolete Features
 
 * Obsolete Features::
 
-   Copyright (C) 1987-2013 Free Software Foundation, Inc.
+   Copyright (C) 1987-2014 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1736,8 +1736,10 @@ with `__FILE__' and `__LINE__', though.
      or a C++ compiler.  This macro is similar to `__STDC_VERSION__', in
      that it expands to a version number.  Depending on the language
      standard selected, the value of the macro is `199711L', as
-     mandated by the 1998 C++ standard, or `201103L', per the 2011 C++
-     standard.
+     mandated by the 1998 C++ standard; `201103L', per the 2011 C++
+     standard; an unspecified value strictly larger than `201103L' for
+     the experimental languages enabled by `-std=c++1y' and
+     `-std=gnu++1y'.
 
 `__OBJC__'
      This macro is defined, with value 1, when the Objective-C compiler
@@ -2146,6 +2148,10 @@ double underscores.
      This macro is defined, with value 2, when `-fstack-protector-all'
      is in use.
 
+`__SSP_STRONG__'
+     This macro is defined, with value 3, when
+     `-fstack-protector-strong' is in use.
+
 `__SANITIZE_ADDRESS__'
      This macro is defined, with value 1, when `-fsanitize=address' is
      in use.
@@ -2183,6 +2189,42 @@ double underscores.
      `fma', `fmaf', and `fmal' builtin functions, so that the include
      file `math.h' can define the macros `FP_FAST_FMA', `FP_FAST_FMAF',
      and `FP_FAST_FMAL' for compatibility with the 1999 C standard.
+
+`__GCC_IEC_559'
+     This macro is defined to indicate the intended level of support for
+     IEEE 754 (IEC 60559) floating-point arithmetic.  It expands to a
+     nonnegative integer value.  If 0, it indicates that the
+     combination of the compiler configuration and the command-line
+     options is not intended to support IEEE 754 arithmetic for `float'
+     and `double' as defined in C99 and C11 Annex F (for example, that
+     the standard rounding modes and exceptions are not supported, or
+     that optimizations are enabled that conflict with IEEE 754
+     semantics).  If 1, it indicates that IEEE 754 arithmetic is
+     intended to be supported; this does not mean that all relevant
+     language features are supported by GCC.  If 2 or more, it
+     additionally indicates support for IEEE 754-2008 (in particular,
+     that the binary encodings for quiet and signaling NaNs are as
+     specified in IEEE 754-2008).
+
+     This macro does not indicate the default state of command-line
+     options that control optimizations that C99 and C11 permit to be
+     controlled by standard pragmas, where those standards do not
+     require a particular default state.  It does not indicate whether
+     optimizations respect signaling NaN semantics (the macro for that
+     is `__SUPPORT_SNAN__').  It does not indicate support for decimal
+     floating point or the IEEE 754 binary16 and binary128 types.
+
+`__GCC_IEC_559_COMPLEX'
+     This macro is defined to indicate the intended level of support for
+     IEEE 754 (IEC 60559) floating-point arithmetic for complex
+     numbers, as defined in C99 and C11 Annex G.  It expands to a
+     nonnegative integer value.  If 0, it indicates that the
+     combination of the compiler configuration and the command-line
+     options is not intended to support Annex G requirements (for
+     example, because `-fcx-limited-range' was used).  If 1 or more, it
+     indicates that it is intended to support those requirements; this
+     does not mean that all relevant language features are supported by
+     GCC.
 
 
 File: cpp.info,  Node: System-specific Predefined Macros,  Next: C++ Named Operators,  Prev: Common Predefined Macros,  Up: Predefined Macros
@@ -5545,52 +5587,52 @@ Node: Concatenation58095
 Node: Variadic Macros61203
 Node: Predefined Macros65990
 Node: Standard Predefined Macros66578
-Node: Common Predefined Macros72420
-Node: System-specific Predefined Macros90043
-Node: C++ Named Operators92066
-Node: Undefining and Redefining Macros93030
-Node: Directives Within Macro Arguments95134
-Node: Macro Pitfalls96682
-Node: Misnesting97215
-Node: Operator Precedence Problems98327
-Node: Swallowing the Semicolon100193
-Node: Duplication of Side Effects102216
-Node: Self-Referential Macros104399
-Node: Argument Prescan106808
-Node: Newlines in Arguments110562
-Node: Conditionals111513
-Node: Conditional Uses113343
-Node: Conditional Syntax114701
-Node: Ifdef115021
-Node: If118182
-Node: Defined120486
-Node: Else121769
-Node: Elif122339
-Node: Deleted Code123628
-Node: Diagnostics124875
-Node: Line Control126422
-Node: Pragmas130226
-Node: Other Directives134982
-Node: Preprocessor Output136032
-Node: Traditional Mode139233
-Node: Traditional lexical analysis140291
-Node: Traditional macros142794
-Node: Traditional miscellany146596
-Node: Traditional warnings147593
-Node: Implementation Details149790
-Node: Implementation-defined behavior150411
-Ref: Identifier characters151163
-Node: Implementation limits154241
-Node: Obsolete Features156915
-Node: Differences from previous versions159803
-Node: Invocation164011
-Ref: Wtrigraphs168463
-Ref: dashMF173238
-Ref: fdollars-in-identifiers182969
-Node: Environment Variables192838
-Node: GNU Free Documentation License195804
-Node: Index of Directives220968
-Node: Option Index223048
-Node: Concept Index229451
+Node: Common Predefined Macros72554
+Node: System-specific Predefined Macros92350
+Node: C++ Named Operators94373
+Node: Undefining and Redefining Macros95337
+Node: Directives Within Macro Arguments97441
+Node: Macro Pitfalls98989
+Node: Misnesting99522
+Node: Operator Precedence Problems100634
+Node: Swallowing the Semicolon102500
+Node: Duplication of Side Effects104523
+Node: Self-Referential Macros106706
+Node: Argument Prescan109115
+Node: Newlines in Arguments112869
+Node: Conditionals113820
+Node: Conditional Uses115650
+Node: Conditional Syntax117008
+Node: Ifdef117328
+Node: If120489
+Node: Defined122793
+Node: Else124076
+Node: Elif124646
+Node: Deleted Code125935
+Node: Diagnostics127182
+Node: Line Control128729
+Node: Pragmas132533
+Node: Other Directives137289
+Node: Preprocessor Output138339
+Node: Traditional Mode141540
+Node: Traditional lexical analysis142598
+Node: Traditional macros145101
+Node: Traditional miscellany148903
+Node: Traditional warnings149900
+Node: Implementation Details152097
+Node: Implementation-defined behavior152718
+Ref: Identifier characters153470
+Node: Implementation limits156548
+Node: Obsolete Features159222
+Node: Differences from previous versions162110
+Node: Invocation166318
+Ref: Wtrigraphs170770
+Ref: dashMF175545
+Ref: fdollars-in-identifiers185276
+Node: Environment Variables195145
+Node: GNU Free Documentation License198111
+Node: Index of Directives223275
+Node: Option Index225355
+Node: Concept Index231758
 
 End Tag Table
